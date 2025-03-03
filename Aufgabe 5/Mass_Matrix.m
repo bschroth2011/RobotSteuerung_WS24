@@ -20,3 +20,17 @@ disp(M2);
 
 disp('Mass Matrix at Configuration 3 (Intermediate):');
 disp(M3);
+
+
+figure;
+subplot(1, 3, 1);
+show(robot, config1);
+title('Vertical Configuration');
+
+subplot(1, 3, 2);
+show(robot, config2);
+title('Horizontal Configuration');
+
+subplot(1, 3, 3);
+show(robot, config3);
+title('intermediate Configuration');

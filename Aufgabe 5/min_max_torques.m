@@ -4,7 +4,7 @@ robot = loadrobot('kukaIiwa14', 'DataFormat', 'column', 'Gravity', [0 0 -9.81]);
 % Define two configurations: Vertical and Horizontal
 config_vertical = [0; 0; 0; 0; 0; 0; 0];       % Arm is vertical (Home position)
 config_horizontal = [0; -pi/2; 0; 0; 0; 0; 0]; % Arm is extended horizontally
-
+config_vertical_down = [0; -pi/2; -pi/2; 0; 0; 0; 0];
 % Compute gravitational torques for both configurations
 tau_vertical = gravityTorque(robot, config_vertical);
 tau_horizontal = gravityTorque(robot, config_horizontal);
@@ -31,10 +31,14 @@ disp(max_torques);
 
 % Visualize both configurations
 figure;
-subplot(1, 2, 1);
+subplot(1, 3, 1);
 show(robot, config_vertical);
 title('Vertical Configuration');
 
-subplot(1, 2, 2);
+subplot(1, 3, 2);
 show(robot, config_horizontal);
 title('Horizontal Configuration');
+
+subplot(1, 3, 3);
+show(robot, config_vertical_down);
+title('vertical_down Configuration');
