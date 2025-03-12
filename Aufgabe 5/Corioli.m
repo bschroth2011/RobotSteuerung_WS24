@@ -10,10 +10,10 @@ q_dot1 = [0.3; 0.3;0.3;0.3;0.3 ;0.3;0.3];
 q_dot2 = [0.6; 0.6;0.6;0.6;0.6 ;0.6;0.6]; 
 q_dot3 = [0.9; 0.9;0.9;0.9;0.9 ;0.9;0.9]; 
 
-%konstant acceleration
+
 q_dot_array = [q_dot1, q_dot2, q_dot3];
 
-
+%konstant acceleration
 q_ddot = [0.5; 0.2; -0.3; 0.1; 0.4; -0.2; 0]; 
 
 J = geometricJacobian(robot, q, 'iiwa_link_ee'); % Compute Jacobian for ee
