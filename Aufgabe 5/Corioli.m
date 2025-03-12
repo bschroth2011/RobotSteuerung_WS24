@@ -14,7 +14,7 @@ q_dot3 = [0.9; 0.9;0.9;0.9;0.9 ;0.9;0.9];
 q_dot_array = [q_dot1, q_dot2, q_dot3];
 
 %konstant acceleration
-q_ddot = [0.5; 0.2; -0.3; 0.1; 0.4; -0.2; 0]; 
+q_ddot = [0.5; 0.5; 0.5; 0.5; 0.5; 0.5; 0.5]; 
 
 J = geometricJacobian(robot, q, 'iiwa_link_ee'); % Compute Jacobian for ee
 
@@ -24,8 +24,10 @@ M = massMatrix(robot, q);
 % Compute Euler Forces
 euler_forces = M * q_ddot;
 
+
 disp('Euler Forces:'), disp(euler_forces);
 
+% Compute Coriolis Forces
 for i = 1:3
 
 end_effector_velocity = J * q_dot_array(:,i);
@@ -42,8 +44,3 @@ disp(Coriolis_Vec)
 
 % disp('End-Effector Velocity (Linear + Angular):')
 % disp(end_effector_velocity)
-
-
-
-
-
