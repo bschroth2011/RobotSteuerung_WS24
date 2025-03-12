@@ -1,3 +1,4 @@
+function drei_inverse_Kinematik()
 close all;
 
 % Load the robot model
@@ -67,5 +68,24 @@ for i = 1:size(poses, 1)
     view(3);
     axis auto;
     grid on;
+
+    % Berechne die tatsächliche Endeffektorpose mit Vorwärtskinematik
+    actualEndEffectorPose = getTransform(robot, configSol, 'iiwa_link_ee');
+
+    % Extrahiere Position und Orientierung
+    actualPosition = actualEndEffectorPose(1:3, 4);
+    actualOrientation = rotm2eul(actualEndEffectorPose(1:3, 1:3), 'ZYX'); % Euler-Winkel (ZYX)
+    
+    % Speichere die Ergebnisse für jede Pose
+    endEffectorPositions(i, :) = actualPosition;
+    endEffectorOrientations(i, :) = actualOrientation;
+    
+    % Gib die tatsächliche Endeffektorlage in der Konsole aus
+    fprintf('Pose %d - Endeffektorposition: X = %.4f, Y = %.4f, Z = %.4f\n', ...
+            i, actualPosition(1), actualPosition(2), actualPosition(3));
+    
+    fprintf('Pose %d - Endeffektororientierung (ZYX Euler): Roll = %.4f, Pitch = %.4f, Yaw = %.4f\n', ...
+            i, actualOrientation(1), actualOrientation(2), actualOrientation(3));
+
 end
 
