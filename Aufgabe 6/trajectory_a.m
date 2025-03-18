@@ -119,5 +119,5 @@ xlim([-1 1]); ylim([-1 1]); zlim([0 1]); % Limits
 % Animationsschleife
 for i = 1:size(q, 2)
     show(robot, q(:,i), 'PreservePlot', false, 'Parent', ax);
-    pause(0.01); % Delay for clean trajectory-display
+    pause(0.00001); % Delay for clean trajectory-display
 end
